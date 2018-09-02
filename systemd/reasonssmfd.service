@@ -1,0 +1,13 @@
+[Unit]
+Description=Reasonset Server Side Mail Filter
+Wants=dovecot.service postfix.service
+After=postfix.service
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/usr/local/bin/reasonssmfd.rb
+ExecStop=/bin/kill $MAINPID
+Type=simple
+Restart=always
